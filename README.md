@@ -69,7 +69,7 @@ The firmware utilizes an Interrupt Service Routine (ISR) attached to the optocou
 *(Note: View the `Hardware/` directory for the raw EAGLE `.sch` file and full-resolution PDF).*
 
 ![Circuit Schematic](hardware/schematic/schematic.png) 
-*(Replace this link with the actual path to your schematic image in the repo)*
+
 
 ---
 
