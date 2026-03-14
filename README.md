@@ -39,7 +39,7 @@ Because the signal is perfectly debounced in hardware, the ESP32 is freed from r
 
 The firmware utilizes an Interrupt Service Routine (ISR) attached to the optocoupler's GPIO pin. The processor remains at 0% load regarding the environmental sensor until a physical `CHANGE` edge violently triggers the interrupt. This event-driven architecture guarantees near-zero latency execution when a lighting change occurs, leaving the dual-core processor entirely free for complex IoT communication or mechatronic actuation.
 
-**Visual Validation:** To prove the zero-latency routing and the absence of overlapping states, two external LEDs were integrated into the digital island (GPIO 21 and GPIO 22). The ISR actively toggles these state indicators: a Red LED activates during the "Dark" state, and a Green LED activates during the "Light" state. The immediate, flicker-free toggling of these LEDs during lighting transitions serves as undeniable visual proof of the system's flawless hardware debouncing and optimized software routing.
+**Visual Validation:** To prove the zero-latency routing and the absence of overlapping states, two external LEDs were integrated into the digital island (GPIO 13 and GPIO 14). The ISR actively toggles these state indicators: a Red LED activates during the "Dark" state, and a Green LED activates during the "Light" state. The immediate, flicker-free toggling of these LEDs during lighting transitions serves as undeniable visual proof of the system's flawless hardware debouncing and optimized software routing.
 
 ---
 
@@ -48,17 +48,19 @@ The firmware utilizes an Interrupt Service Routine (ISR) attached to the optocou
 * 1x ESP32 Development Board
 * 1x UA741CPE4 Operational Amplifier
 * 1x 4N35 Optocoupler
-* 1x VTB3CT Light Dependent Resistor (LDR)
+* 1x Light Dependent Resistor (LDR)
 * 2x 1N4004 Rectifier Diodes
-* 2x 5mm LEDs (1x Red, 1x Green)
+* 2x 5mm LEDs (1x Blue, 1x Yellow)
 
 ### Passives
 * 3x 10k$\Omega$ Resistors (Voltage divider & Pull-up)
 * 1x 100k$\Omega$ Resistor (Positive feedback)
-* 2x 330$\Omega$ Resistors (Current limiting for LEDs)
+* 2x 220$\Omega$ Resistors (Current limiting for LEDs)
+* 1x 330$\Omega$ Resistor (Current limiting for 4N35 LED)
 
 ### Power
 * 1x 5V 2A Power Adapter
+* 1x 5V Power Module
 * 1x Breadboard Boost Converter Module (Tuned to 8.5V)
 
 ---
@@ -79,8 +81,8 @@ The following code demonstrates the non-blocking architecture, utilizing the `IR
 
 // 1. Define hardware pins
 const int optoPin = 4;      // GPIO 4 connected to the 4N35 Collector
-const int ledDarkPin = 21;  // Red LED (Active when Dark)
-const int ledLightPin = 22; // Green LED (Active when Light)
+const int ledDarkPin = 13;  // Yellow LED (Active when Dark)
+const int ledLightPin = 14; // Blue LED (Active when Light)
 
 // 2. Volatile variables for the ISR
 volatile bool stateChanged = false;
