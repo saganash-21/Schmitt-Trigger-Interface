@@ -53,10 +53,10 @@ The firmware utilizes an Interrupt Service Routine (ISR) attached to the optocou
 * 2x 5mm LEDs (1x Blue, 1x Yellow)
 
 ### Passives
-* 3x 10k$\Omega$ Resistors (Voltage divider & Pull-up)
-* 1x 100k$\Omega$ Resistor (Positive feedback)
-* 2x 220$\Omega$ Resistors (Current limiting for LEDs)
-* 1x 330$\Omega$ Resistor (Current limiting for 4N35 LED)
+* 3x 10kΩ Resistors (Voltage divider & Pull-up)
+* 1x 100kΩ Resistor (Positive feedback)
+* 2x 220Ω Resistors (Current limiting for LEDs)
+* 1x 330Ω Resistor (Current limiting for 4N35 LED)
 
 ### Power
 * 1x 5V 2A Power Adapter
